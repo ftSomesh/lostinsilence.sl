@@ -24,7 +24,7 @@
 </head>
 <body>
     <video id="myVideo" autoplay controls>
-        <source src="./video/lostInSilence.mp4" type="video/mp4">
+        <source src="video/lostInSilence.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
@@ -32,19 +32,21 @@
         document.addEventListener("DOMContentLoaded", function () {
             let video = document.getElementById("myVideo");
 
-            // Attempt to request full-screen mode
-            video.requestFullscreen = video.requestFullscreen || 
-                                      video.mozRequestFullScreen || 
-                                      video.webkitRequestFullscreen || 
-                                      video.msRequestFullscreen;
+            // Check if the device is a PC (screen width > 768px)
+            if (window.innerWidth > 768) {
+                video.requestFullscreen = video.requestFullscreen || 
+                                          video.mozRequestFullScreen || 
+                                          video.webkitRequestFullscreen || 
+                                          video.msRequestFullscreen;
 
-            video.play().then(() => {
-                if (video.requestFullscreen) {
-                    video.requestFullscreen();
-                }
-            }).catch(err => {
-                console.log("Autoplay failed: ", err);
-            });
+                video.play().then(() => {
+                    if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    }
+                }).catch(err => {
+                    console.log("Autoplay failed: ", err);
+                });
+            }
         });
     </script>
 </body>
