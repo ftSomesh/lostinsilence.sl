@@ -3,51 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full Trailer</title>
+    <title>Trailer</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
         video {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
+            display: block;
+            margin-inline: auto;
+            max-width: 1000px;
+            width: 100%;
         }
     </style>
 </head>
 <body>
-    <video id="myVideo" autoplay controls>
-        <source src="video/lostInSilence.mp4" type="video/mp4">
+    <video controls autoplay muted>
+        <source src="./video/lostInSilence.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let video = document.getElementById("myVideo");
-
-            // Check if the device is a PC (screen width > 768px)
-            if (window.innerWidth > 768) {
-                video.requestFullscreen = video.requestFullscreen || 
-                                          video.mozRequestFullScreen || 
-                                          video.webkitRequestFullscreen || 
-                                          video.msRequestFullscreen;
-
-                video.play().then(() => {
-                    if (video.requestFullscreen) {
-                        video.requestFullscreen();
-                    }
-                }).catch(err => {
-                    console.log("Autoplay failed: ", err);
-                });
-            }
-        });
-    </script>
 </body>
 </html>
